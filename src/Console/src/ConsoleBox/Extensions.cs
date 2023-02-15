@@ -42,6 +42,8 @@ internal static class Extensions
 
     internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-        return services.AddTransient<IMain, Main>();
+        return services
+            // Add services here
+            .AddTransient<Main>();
     }
 }

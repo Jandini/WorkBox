@@ -1,5 +1,5 @@
 ﻿// Created with JandaBox http://github.com/Jandini/JandaBox
-#if (simple)
+#if (basic)
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 #if (serilog)
@@ -53,7 +53,7 @@ Parser.Default.ParseArguments<Options.Run>(args).WithParsed((parameters) =>
 
     try
     {
-        var main = provider.GetRequiredService<IMain>();
+        var main = provider.GetRequiredService<Main>();
 
         switch (parameters)
         {

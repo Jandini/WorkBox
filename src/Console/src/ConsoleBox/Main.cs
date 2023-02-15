@@ -1,4 +1,4 @@
-﻿#if (simple)
+﻿#if (basic)
 using Microsoft.Extensions.Logging;
 
 internal class Main
@@ -19,7 +19,7 @@ internal class Main
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-internal class Main : IMain
+internal class Main
 {
     private readonly ILogger<Main> _logger;
     private readonly IConfiguration _config;

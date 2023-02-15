@@ -4,7 +4,7 @@
   "classifications": ["JandaBox/Console"],
   "name": "JandaBox Console",
   "generatorVersions": "[1.0.0.0-*)",
-  "description": "JandaBox Console provides startup solution for console application with dependency injection, logging, and configuration.",
+  "description": "ConsoleBox provides startup solution for console application with dependency injection, logging, and configuration.",
   "groupIdentity": "jandabox",
   "precedence": "4000",
   "identity": "JandaBox.Console",
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "condition": "(simple)",
+          "condition": "(basic)",
           "exclude": [
             ".github/**/*",
             "src/ConsoleBox/appsettings.json",
@@ -46,17 +46,17 @@
       "type": "parameter",
       "replaces": "ConsoleBox",
     },
-    "simple": {
+    "basic": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
-      "description": "Create simple console."
+      "description": "Create basic console application."
     },
     "serilog": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "true",
-      "description": "Use serilog."
+      "description": "Use Serilog logger."
     }
   }
 }

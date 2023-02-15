@@ -11,7 +11,7 @@ else {
 }
 
 
-nuget pack .nuspec -OutputDirectory bin/Release -NoDefaultExcludes -Version ${gitVersion}
+nuget pack .nuspec -OutputDirectory bin\Release -NoDefaultExcludes -Version ${gitVersion}
 
 dotnet new uninstall JandaBox | Out-Null
 dotnet new install bin/Release/JandaBox.${gitVersion}.nupkg
