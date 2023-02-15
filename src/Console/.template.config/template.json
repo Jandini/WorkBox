@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Matt Janda",
+  "classifications": ["JandaBox/Console"],
+  "name": "JandaBox Console",
+  "generatorVersions": "[1.0.0.0-*)",
+  "description": "JandaBox Console provides startup solution for console application with dependency injection, logging, and configuration.",
+  "groupIdentity": "jandabox",
+  "precedence": "4000",
+  "identity": "JandaBox.Console",
+  "shortName": "consolebox",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "ConsoleBox",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".vs/**",
+            ".git/**",
+            "/**/obj/**",
+            ".nuspec"
+          ]
+        },
+        {
+          "condition": "(simple)",
+          "exclude": [
+            ".github/**/*",
+            "src/ConsoleBox/appsettings.json",
+            "src/ConsoleBox/IMain.cs",
+            "src/ConsoleBox/Extensions.cs",
+            "src/ConsoleBox/Options.cs",
+            "src/ConsoleBox/Settings.cs",
+            "src/ConsoleBox/Properties/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "sourceName": {
+      "type": "parameter",
+      "replaces": "ConsoleBox",
+    },
+    "simple": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Create simple console."
+    },
+    "serilog": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Use serilog."
+    }
+  }
+}
