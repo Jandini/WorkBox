@@ -22,13 +22,7 @@ dotnet new -i JandaBox
 
 ## Quick Start
 
-Create console application with `consolebox` template.  
-
-```sh
-dotnet new consolebox
-```
-
-or 
+Create default console application with `consolebox` template.
 
 ```sh
 dotnet new consolebox -n MyApp
@@ -36,9 +30,13 @@ dotnet new consolebox -n MyApp
 
 
 
+#### Name parameter
 
+The name parameter `-n` is optional.  
 
-
+```sh
+dotnet new consolebox
+```
 
 
 
@@ -50,25 +48,14 @@ ConsoleBox .NET template provides startup solution for console application with 
 
 ###### Template options
 
-`--basic`	Creates basic console application with minimal amount startup code. Default value is `false`
-
-`--serilog`	Provides Serilog as the logger. By default this setting is set to `true`. 
-
-`--async`
-
-`--git`
+* `--basic`  Create basic console application with minimal amount startup code. Default value is `false`.
+* `--serilog`  Provides Serilog as the logger. Default value is `true`. 
+* `--async` Create asynchronous code.  Default value is `false`.
+* `--git` Add versioning with GitVersion. Note: The code can be build only within git repository. 
 
 
 
-
-
-## 
-
-
-
-
-
-### Basic console
+### Basic console application
 
 Create basic console application with Microsoft console logger. 
 
@@ -84,11 +71,29 @@ dotnet new consolebox -n Basic --simple
 
 
 
-### Console application
+### Default console application
 
-Create console application with Serilog configuration
+Create console application with Serilog to console and file. 
+
+```sh
+dotnet new consolebox -n MyApp
+```
+
+You can create console application with Microsoft console logger only.
+
+```sh
+dotnet new consolebox -n MyApp --serilog false
+```
 
 
+
+### Help
+
+For more information about **ConsoleBox** template run 
+
+```
+dotnet new consolebox -h  
+```
 
 
 
@@ -103,19 +108,6 @@ Provides GitHub actions templates.
 `--build`
 
 
-
-
-
-
-
-
-## Help
-
-More information about **Console Box** template 
-
-```
-dotnet new consolebox -h  
-```
 
 
 
