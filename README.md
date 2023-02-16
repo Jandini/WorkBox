@@ -3,11 +3,17 @@
 [![.NET](https://github.com/Jandini/JandaBox/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/JandaBox/actions/workflows/build.yml)
 [![NuGet](https://github.com/Jandini/JandaBox/actions/workflows/nuget.yml/badge.svg)](https://github.com/Jandini/JandaBox/actions/workflows/nuget.yml)
 
-.NET templates provides startup code with dependency injection, logging, configuration and more...
+.NET6/7 templates provides startup code with dependency injection, logging, configuration and more...
+
+###### Templates
+
+* ConsoleBox
+* ActionBox
+
 
 ## Install
 
-To install this template use `dotnet` command. It will automatically download the template NuGet package from https://www.nuget.org/packages/JandaBox
+To install JandaBox templates use `dotnet` command. It will automatically download NuGet package from https://www.nuget.org/packages/JandaBox
 
 ```bash
 dotnet new install JandaBox
@@ -22,15 +28,11 @@ dotnet new -i JandaBox
 
 ## Quick Start
 
-Create default console application with `consolebox` template.
+Create default .NET6 console application with `consolebox` template.
 
 ```sh
 dotnet new consolebox -n MyApp
 ```
-
-
-
-#### Name parameter
 
 The name parameter `-n` is optional.  
 
@@ -40,30 +42,70 @@ dotnet new consolebox
 
 
 
+### ConsoleBox
+
+ConsoleBox .NET template provides startup solution for console application with dependency injection, logging, and configuration. Default logger is [Serilog](https://serilog.net). Use `--serilog false` parameter to switch to Microsoft console logger.
 
 
-## ConsoleBox
 
-ConsoleBox .NET template provides startup solution for console application with dependency injection, logging, and configuration. Default logger is [Serilog](https://serilog.net/ ). Microsoft console logger is available with `--serilog false` switch. 
-
-###### Template options
+###### Options
 
 * `--basic`  Create basic console application with minimal amount startup code. Default value is `false`.
-* `--serilog`  Provides Serilog as the logger. Default value is `true`. 
-* `--async` Create asynchronous code.  Default value is `false`.
-* `--git` Add versioning with GitVersion. Note: The code can be build only within git repository. 
 
+* `--serilog`  Use Serilog. Default value is `true`. 
+
+* `--async` Create asynchronous code.  Default value is `false`.
+
+* `--git` Add versioning with GitVersion. The code created with `--git` parameter can be only build from initialized git repository.  
+
+  ```sh
+  dotnet new consolebox -n MyApp --git
+  cd MyApp
+  git init -b main
+  git add .
+  git commit -m "First commit"
+  dotnet build src
+  ```
+
+  ​
+
+### Features
+
+- Repository Layout
+  - The `src` and `bin` folders 
+  - Default `README.md` file 
+  - Default `.gitignore` file
+  - Default `launchSettings.json` file​
+- Dependency Injection
+  - Main service with logging
+  - Dispose service provider 
+- Logging
+  - `Serilog`  or `Microsoft` log providers  
+  - Serilog environment enrichers
+  - Unhandled exceptions logging
+- Configuration
+  - Embedded `appsettings.json` file
+  - Override embedded `appsettings.json` with a file
+  - Configuration binding
+- Semantic Versioning
+  - GitVersion.MsBuild package
+  - Configuration `GitVersion.yml` file
+- Command line parser
+  - Verbs and options parser
+- Asynchronous code
+
+## 
 
 
 ### Basic console application
 
-Create basic console application with Microsoft console logger. 
+Create basic console application with Microsoft console logger
 
 ```sh
-dotnet new consolebox -n Basic --simple --serilog false	
+dotnet new consolebox -n Basic --basic --serilog false	
 ```
 
-You can create basic console application with Serilog too.
+or console application with Serilog.
 
 ```sh
 dotnet new consolebox -n Basic --simple
@@ -97,52 +139,21 @@ dotnet new consolebox -h
 
 
 
+
+
 ## ActionBox
 
 Provides GitHub actions templates. 
 
-`--docker`
+````
+dotnet new actionbox --build
+````
 
-`--nuget`
+###### Options
 
-`--build`
-
-
-
-
-
-
-
-## Features
-
-* .NET6
-* Repository Layout
-  * The `src` and `bin` folders 
-  * Default `README.md` file 
-  * Default `.gitignore` file
-  * Default `launchSettings.json` file
-* GitHub Actions
-  * `Build` and `Test` workflow file for .NET6
-* Dependency Injection
-  * Main service with logging
-  * Service provider disposal
-* Logging
-  *  `Serilog`  or `Microsoft` log providers  
-  *  Unhandled exceptions logging
-  *  Version logging
-  *  Dynamic logger
-* Configuration
-  * Embedded `appsettings.json`  file
-  * Override embedded `appsettings.json` with the file
-  * Settings binding
-  * Configuration and settings injection
-* Command line parser
-  * Verbs and options parser
-
-
-
-
-
+- `--build`  
+- `--nuget`  
+- `--docker`
 
 
 

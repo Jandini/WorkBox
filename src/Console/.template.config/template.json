@@ -29,9 +29,7 @@
         {
           "condition": "(basic)",
           "exclude": [
-            ".github/**/*",
             "src/ConsoleBox/appsettings.json",
-            "src/ConsoleBox/IMain.cs",
             "src/ConsoleBox/Extensions.cs",
             "src/ConsoleBox/Options.cs",
             "src/ConsoleBox/Settings.cs",
@@ -69,6 +67,12 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Provide semantic versioning with GitVesion."
+    },
+    "async": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Run main with async await."
     }
   }
 }

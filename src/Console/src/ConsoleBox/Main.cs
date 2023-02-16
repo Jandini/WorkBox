@@ -10,9 +10,14 @@ internal class Main
         _logger = logger;
     }
 
+#if (async)
     public void Run()
+#else
+    public async Task Run()
+#endif    
     {
         _logger.LogInformation("Hello, World!");
+        await Task.CompletedTask; 
     }
 }
 #else
@@ -29,12 +34,16 @@ internal class Main
         _logger = logger;
         _config = config;
     }
+#if (async)
+    public async Task Run(string path)
+#else
     public void Run(string path)
+#endif    
     {
-        _logger.LogInformation(_config.GetRequiredSection("ConsoleBox").Get<Settings>().Message);
-
         var dir = new DirectoryInfo(path);
-        _logger.LogInformation("Directory {path:l} contains {file} files.", dir.Name, dir.GetFiles().Length);
+        _logger.LogInformation(_config.Bind<Settings>().Message, dir.Name, dir.GetFiles().Length);
+        
+        await Task.CompletedTask;
     }
 }
 #endif

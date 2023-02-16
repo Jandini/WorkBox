@@ -23,7 +23,11 @@ using var provider = new ServiceCollection()
 
 try
 {
+#if (async)
+    await provider.GetRequiredService<Main>().Run();
+#else
     provider.GetRequiredService<Main>().Run();
+#endif    
 }
 catch (Exception ex)
 {
@@ -36,7 +40,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using CommandLine;
 
+#if (async)
+await Parser.Default.ParseArguments<Options.Run>(args).WithParsedAsync(async (parameters) =>
+#else
 Parser.Default.ParseArguments<Options.Run>(args).WithParsed((parameters) =>
+#endif    
 {
     var config = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
@@ -58,7 +66,11 @@ Parser.Default.ParseArguments<Options.Run>(args).WithParsed((parameters) =>
         switch (parameters)
         {
             case Options.Run options:
+#if (async)
+                await main.Run(options.Path);
+#else
                 main.Run(options.Path);
+#endif
                 break;
         };
     }

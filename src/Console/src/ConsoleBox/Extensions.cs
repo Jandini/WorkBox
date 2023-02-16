@@ -16,6 +16,11 @@ internal static class Extensions
             .LogInformation("ConsoleBox {version:l}", typeof(T).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
     }
 
+    internal static T Bind<T>(this IConfiguration configuration) 
+    {
+        return configuration.GetRequiredSection("ConsoleBox").Get<T>();
+    }
+
     internal static IConfigurationBuilder AddEmbeddedJsonFile(this IConfigurationBuilder builder, string name)
     {
         return builder
